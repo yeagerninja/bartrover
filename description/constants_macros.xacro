@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <!-- Specify Some Useful Robot Constants -->
+
+    <!-- ********************** ROBOT CONSTANTS *********************************  -->
+    <xacro:property name="clearance" value="0.035" />
+    <xacro:property name="wheel_radius" value="0.035"/>
+    <xacro:property name="wheel_separation" value="0.15"/>
+    <xacro:property name="wheel_width" value="0.035"/>
+    <xacro:property name="mass" value="0.1"/>
+    <xacro:property name="wheel_mass" value="0.2"/>
+    <xacro:property name="marker_mass" value="0.0"/>
+    <xacro:property name="inertia" value="0.3"/>
+    <xacro:property name="PI" value="3.1415926"/>
+    <xacro:property name="wheel_ixx" value="${wheel_mass*(3*wheel_radius*wheel_radius+wheel_width*wheel_width)/12}" />
+    <xacro:property name="wheel_ixy" value="0.0" />
+    <xacro:property name="wheel_ixz" value="0.0" />
+    <xacro:property name="wheel_iyy" value="${wheel_mass*(3*wheel_radius*wheel_radius+wheel_width*wheel_width)/12}" />
+    <xacro:property name="wheel_iyz" value="0.0" />
+    <xacro:property name="wheel_izz" value="${wheel_mass*wheel_radius*wheel_radius/2}" />
+
+    <!-- ********************** GAZEBO CONSTANTS *********************************  -->
+    <xacro:property name="lateral_friction" value="1.0" />
+    <xacro:property name="spinning_friction" value="0.1" />
+    <xacro:property name="contact_stiffness" value="10000000.0" />
+    <xacro:property name="contact_damping" value="1.0" />
+
+
+</robot>

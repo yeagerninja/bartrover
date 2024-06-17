@@ -2,10 +2,10 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <!-- ********************** CAMERA CONSTANTS *********************************  -->
-    <xacro:property name="camera_height" value="0.075" />
+    <xacro:property name="camera_height" value="0.08" />
     <xacro:property name="camera_width" value="0.02" />
     <xacro:property name="camera_thick" value="0.01" />
-    <xacro:property name="camera_x" value="0.04" />
+    <xacro:property name="camera_x" value="0.03" />
     <xacro:property name="camera_y" value="0.025" />
     <xacro:property name="camera_z" value="0.05" />
 
@@ -24,23 +24,26 @@
             </geometry>
             <material name="Green" />
         </visual>
-        <inertial>
-            <origin xyz="${camera_x} ${camera_y} ${camera_z}" rpy="0 0 0" />
-            <mass value="0.1" />
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
-        </inertial>
+
         <collision>
             <origin xyz="${camera_x} ${camera_y} ${camera_z}" rpy="0 0 0"/>
             <geometry>
                 <box size="${camera_thick} ${camera_width} ${camera_height}"/>
             </geometry>
-        </collision>    
+        </collision>
+
+        <inertial>
+            <origin xyz="${camera_x} ${camera_y} ${camera_z}" rpy="0 0 0" />
+            <mass value="${mass}" />
+            <inertia ixx="${inertia}" ixy="0.0" ixz="0.0" iyy="${inertia}" iyz="0.0" izz="${inertia}" />
+        </inertial>
+
     </link>
 
     <joint name="camera_optical_joint" type="fixed">
         <parent link="camera_link"/>
         <child link="camera_link_optical"/>
-        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+        <origin xyz="${camera_x} ${camera_y} ${camera_z}" rpy="0 0 0"/>
     </joint>
 
     <link name="camera_link_optical"></link>
@@ -48,7 +51,7 @@
 
 
     <!-- ********************** Gazebo Characteristics *********************************  -->
-    <gazebo reference="camera_link">
+    <gazebo reference="camera_link_optical">
         <material>Gazebo/Green</material>
 
         <sensor name="camera" type="camera">
@@ -68,7 +71,18 @@
                 </clip>
             </camera>
             <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-                <frame_name>camera_link_optical</frame_name>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>0.0</updateRate>
+                <cameraName>bartrover/camera1</cameraName>
+                <frameName>camera_link_optical</frameName>
+                <imageTopicName>image_raw</imageTopicName>
+                <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
             </plugin>
         </sensor>
     </gazebo>

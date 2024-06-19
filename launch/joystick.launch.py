@@ -31,6 +31,7 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
+        DeclareLaunchArgument('joy_config', default_value='xbox'),
         joy_node,
         teleop_node,     
     ])

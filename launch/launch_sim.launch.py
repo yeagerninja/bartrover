@@ -19,6 +19,11 @@ def generate_launch_description():
 
     package_name='bartrover' #<--- CHANGE ME
 
+    foxglove_bridge = Node(
+        package="foxglove_bridge",
+        executable="foxglove_bridge"
+    )
+
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
@@ -82,6 +87,7 @@ def generate_launch_description():
 
     # Launch them all!
     return LaunchDescription([
+        foxglove_bridge,
         rsp,
         #rplidar
         camera,

@@ -71,10 +71,11 @@
                 </clip>
             </camera>
             <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <frameName>camera_link_optical</frameName>
+            <!-- 
                 <alwaysOn>true</alwaysOn>
                 <updateRate>0.0</updateRate>
                 <cameraName>bartrover/camera1</cameraName>
-                <frameName>camera_link_optical</frameName>
                 <imageTopicName>image_raw</imageTopicName>
                 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
                 <hackBaseline>0.07</hackBaseline>
@@ -83,6 +84,7 @@
                 <distortionK3>0.0</distortionK3>
                 <distortionT1>0.0</distortionT1>
                 <distortionT2>0.0</distortionT2>
+            -->
             </plugin>
         </sensor>
     </gazebo>

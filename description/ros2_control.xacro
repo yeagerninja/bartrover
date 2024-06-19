@@ -5,12 +5,8 @@
         <ros2_control name="RealRobot" type="system">
             <hardware>
                 <plugin>diffdrive_arduino/DiffDriveArduinoHardware</plugin>
-                <param name="rear_left_wheel_name">rear_left_wheel_joint</param>
-                <param name="rear_right_wheel_name">rear_right_wheel_joint</param>
-                <param name="middle_left_wheel_name">middle_left_wheel_joint</param>
-                <param name="middle_right_wheel_name">middle_right_wheel_joint</param>
-                <param name="front_left_wheel_name">front_left_wheel_joint</param>
-                <param name="front_right_wheel_name">front_right_wheel_joint</param>
+                <param name="left_wheel_name">rear_left_wheel_joint</param>
+                <param name="right_wheel_name">rear_right_wheel_joint</param>
                 <param name="loop_rate">30</param>
                 <param name="device">/dev/ttyUSB0</param>
                 <param name="baud_rate">57600</param>
@@ -35,6 +31,7 @@
                 <state_interface name="velocity"/>
             </joint>
             <!-- ********************** MIDDLE ********************************* -->
+            <!--
             <joint name="middle_left_wheel_joint">
                 <command_interface name="velocity">
                     <param name="min">-10</param>
@@ -51,7 +48,9 @@
                 <state_interface name="position"/>
                 <state_interface name="velocity"/>
             </joint>
+             -->
             <!-- ********************** FORWARD ********************************* -->
+            <!--
             <joint name="front_left_wheel_joint">
                 <command_interface name="velocity">
                     <param name="min">-10</param>
@@ -68,6 +67,7 @@
                 <state_interface name="position"/>
                 <state_interface name="velocity"/>
             </joint>
+             -->
         </ros2_control>
     </xacro:unless>
 

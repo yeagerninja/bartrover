@@ -28,6 +28,23 @@ def generate_launch_description():
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
 
+    #rplidar = IncludeLaunchDescription(
+    #            PythonLaunchDescriptionSource([os.path.join(
+    #                get_package_share_directory(package_name),'launch','rplidar.launch.py'
+    #            )]), launch_arguments={'use_sim_time': 'false'}.items()
+    #)
+    
+    camera = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','camera.launch.py'
+                )]), launch_arguments={'use_sim_time': 'false'}.items()
+    )
+
+    joystick = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','joystick.launch.py'
+                )]), launch_arguments={'use_sim_time': 'false'}.items()
+    )
 
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
     twist_mux = Node(
@@ -82,6 +99,9 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
+        #rplidar,
+        camera,
+        joystick,
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,

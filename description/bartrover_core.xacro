@@ -28,22 +28,20 @@
 		<visual>
 			<origin xyz="0 0 0.03" rpy="0 0 0" />
             <geometry>
-                <box size="0.28 ${wheel_separation} 0.08"/>
+                <box size="${body_length} ${wheel_separation} ${body_height}"/>
             </geometry>
 			<material name="White" />
 		</visual>
 		<collision>
 			<origin xyz="0 0 0.03" rpy="0 0 0" />
             <geometry>
-                <box size="0.28 ${wheel_separation} 0.08"/>
+                <box size="${body_length} ${wheel_separation} ${body_height}"/>
             </geometry>
 		</collision>
-        <inertial>
-            <origin xyz="0 0 0.03" rpy="0 0 0" />
-            <mass value="${mass}" />
-            <inertia ixx="${inertia}" ixy="0.0" ixz="0.0" iyy="${inertia}" iyz="0.0" izz="${inertia}" />
-        </inertial>
-	</link>
+        <xacro:inertial_box mass="${body_mass}" x="${body_length}" y="${wheel_separation}" z="${body_height}">
+            <origin xyz="0 0 0.03" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
     <gazebo reference="body_link">
         <material>Gazebo/White</material>
     </gazebo>
@@ -56,6 +54,8 @@
         <child link="rear_left_wheel" />
         <origin xyz="-0.104 ${wheel_separation/2 + wheel_width/2} 0" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
+        <limit effort="${limit_effort}" velocity="${limit_velocity}"/>
+        <dynamics damping="${dynamic_damping}" friction="${spinning_friction}"/>
     </joint>
     
     <link name="rear_left_wheel">
@@ -115,6 +115,8 @@
         <child link="rear_right_wheel" />
 		<origin xyz="-0.104 ${-1 * (wheel_separation/2 + wheel_width/2)} 0" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
+        <limit effort="${limit_effort}" velocity="${limit_velocity}"/>
+        <dynamics damping="${dynamic_damping}" friction="${spinning_friction}"/>
     </joint>
 
     <link name="rear_right_wheel">
@@ -176,6 +178,8 @@
         <child link="middle_left_wheel" />
 		<origin xyz="0 ${wheel_separation/2 + wheel_width/2} 0" rpy="0 0 0" />
         <axis xyz="0 1 0"/>
+        <limit effort="${limit_effort}" velocity="${limit_velocity}"/>
+        <dynamics damping="${dynamic_damping}" friction="${spinning_friction}"/>
     </joint>
 
     <link name="middle_left_wheel">
@@ -235,6 +239,8 @@
         <child link="middle_right_wheel" />
 		<origin xyz="0 ${-1 * (wheel_separation/2 + wheel_width/2)} 0" rpy="0 0 0" />
         <axis xyz="0 1 0"/>
+        <limit effort="${limit_effort}" velocity="${limit_velocity}"/>
+        <dynamics damping="${dynamic_damping}" friction="${spinning_friction}"/>
     </joint>
 
     <link name="middle_right_wheel">
@@ -296,6 +302,8 @@
         <child link="front_left_wheel" />
 		<origin xyz="0.104 ${wheel_separation/2 + wheel_width/2} 0" rpy="0 0 0" />
         <axis xyz="0 1 0"/>
+        <limit effort="${limit_effort}" velocity="${limit_velocity}"/>
+        <dynamics damping="${dynamic_damping}" friction="${spinning_friction}"/>
     </joint>
 
     <link name="front_left_wheel">
@@ -355,6 +363,8 @@
         <child link="front_right_wheel" />
 		<origin xyz="0.104 ${-1 * (wheel_separation/2 + wheel_width/2)} 0" rpy="0 0 0" />
         <axis xyz="0 1 0"/>
+        <limit effort="${limit_effort}" velocity="${limit_velocity}"/>
+        <dynamics damping="${dynamic_damping}" friction="${spinning_friction}"/>
     </joint>
 
     <link name="front_right_wheel">

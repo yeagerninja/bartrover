@@ -11,10 +11,11 @@ def generate_launch_description():
             executable='rplidar_composition',
             output='screen',
             parameters=[{
-                'serial_port': '/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0-port0',
+                'serial_port': '/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_54539189525aee11ac5d81dc8ffcc75d-if00-port0' ,
                 'frame_id': 'laser_frame',
                 'angle_compensate': True,
-                'scan_mode': 'Standard'
+                'scan_mode': 'Standard' ,
+                'serial_baudrate': 460800
             }]
         )
     ])

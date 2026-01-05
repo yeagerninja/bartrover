@@ -3,15 +3,16 @@ joy_node:
     device_id: 0
     deadzone: 0.05
     autorepeat_rate: 20.0
+    sticky_buttons: false
 
 teleop_node:
   ros__parameters:
     axis_linear:
       x: 1
     scale_linear:
-      x: 0.5
+      x: 0.7
     scale_linear_turbo:
-      x: 1.0
+      x: 1.2
 
     axis_angular:
       yaw: 0
@@ -20,6 +21,7 @@ teleop_node:
     scale_angular_turbo:
       yaw: 1.0
 
+    publish_stamped_twist: false
 
     enable_button: 6
     enable_turbo_button: 7

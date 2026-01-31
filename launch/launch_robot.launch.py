@@ -33,17 +33,17 @@ def generate_launch_description():
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
 
-    #rplidar = IncludeLaunchDescription(
+    #rplidar_node = IncludeLaunchDescription(
     #            PythonLaunchDescriptionSource([os.path.join(
     #                get_package_share_directory(package_name),'launch','rplidar.launch.py'
     #            )]), launch_arguments={'use_sim_time': 'false'}.items()
     #)
     
-    #camera = IncludeLaunchDescription(
-    #            PythonLaunchDescriptionSource([os.path.join(
-    #                get_package_share_directory(package_name),'launch','camera.launch.py'
-    #            )]), launch_arguments={'use_sim_time': 'false'}.items()
-    #)
+    camera_node = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','camera.launch.py'
+                )]), launch_arguments={'use_sim_time': 'false'}.items()
+    )
 
     joystick = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -105,8 +105,8 @@ def generate_launch_description():
     return LaunchDescription([
         foxglove_bridge,
         rsp,
-        #rplidar,
-        #camera,
+        #rplidar_node,
+        camera_node,
         joystick,
         twist_mux,
         delayed_controller_manager,

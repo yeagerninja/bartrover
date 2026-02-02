@@ -7,15 +7,21 @@ def generate_launch_description():
     return LaunchDescription([
 
         Node(
-            package='rplidar_ros',
-            executable='rplidar_composition',
-            output='screen',
+            package='sllidar_ros2',
+            executable='sllidar_node',
+            name='sllidar_node',
             parameters=[{
-                'serial_port': '/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_54539189525aee11ac5d81dc8ffcc75d-if00-port0' ,
-                'frame_id': 'laser_frame',
+                'channel_type': 'serial',
+                'serial_port': '/dev/ttyRPLidar', 
+                'serial_baudrate': 460800,  # Critical: C1 specific baud rate
+                'frame_id': 'laser',
+                'inverted': False,
                 'angle_compensate': True,
-                'scan_mode': 'Standard' ,
-                'serial_baudrate': 460800
-            }]
+                'scan_mode': 'Standard',    # C1 typically uses 'Standard' or 'Dense'
+                # Add these if supported by your specific driver build:
+                #'angle_start': 45.0,  # Start angle in degrees
+                #'angle_end': 315.0,   # End angle in degrees
+            }],
+            output='screen'
         )
     ])

@@ -19,9 +19,10 @@ Joystick and or keyboard launch commands optional depending on foxglove setup.
 
 Concurrent requirements (place packages in src directory):
 
-	diffdrive_arduino: -b humble https://github.com/joshnewans/diffdrive_arduino
- 
-	serial: https://github.com/joshnewans/serial
+	git clone https://github.com/YJ0528/diffdrive_arduino
+	git clone https://github.com/joshnewans/serial
+	git clone https://github.com/Slamtec/sllidar_ros2.git
+
 
 Simulation:
 
@@ -29,7 +30,7 @@ My launch codes (commands):
 	
  	ros2 launch bartrover launch_sim.launch.py world:=./src/bartrover/worlds/neighborhood.world
  
- 	[optional] sudo xboxdrv --silent
+ 	[optional] ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_keyboard
  
 	[optional] ros2 launch teleop_twist_joy teleop-launch.py joy_config:='xbox'
   
@@ -41,7 +42,5 @@ Real Robot:
 My launch codes (commands):
 
 	ros2 launch bartrover launch_robot.launch.py
- 
-	[optional] ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 
 ![IMG_2615](https://github.com/user-attachments/assets/8c4989c4-7882-44bb-b073-2b780e9b61d8)

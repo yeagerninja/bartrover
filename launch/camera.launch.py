@@ -21,23 +21,23 @@ def generate_launch_description():
             }]
         ),
         
-         # The republish node to create compressed images
-        Node(
-            package='image_transport',
-            executable='republish',
-            name='republish_node',
-           # Pass command line arguments before --ros-args
-            arguments=['raw', 'compressed'], 
-            remappings=[
-                # Remapping the input raw image topic
-                ('in', '/camera/image_raw'),
-                # Remapping the output compressed image topic
-                ('out/compressed', '/camera/image_compressed')
-            ],
-            parameters=[
-                # Setting the transport type parameter
-                {'image_transport': 'compressed'}
-            ],
-            output='screen'
-        )
+        # # The republish node to create compressed images
+        #Node(
+        #    package='image_transport',
+        #    executable='republish',
+        #    name='republish_node',
+        #   # Pass command line arguments before --ros-args
+        #    arguments=['raw', 'compressed'], 
+        #    remappings=[
+        #        # Remapping the input raw image topic
+        #        ('in', '/camera/image_raw'),
+        #        # Remapping the output compressed image topic
+        #        ('out/compressed', '/camera/image_compressed')
+        #    ],
+        #    parameters=[
+        #        # Setting the transport type parameter
+        #        {'image_transport': 'compressed'}
+        #    ],
+        #    output='screen'
+        #)
     ])

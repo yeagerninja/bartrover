@@ -20,7 +20,7 @@ def generate_launch_description():
     teleop_node = Node(
             package='teleop_twist_joy',
             executable='teleop_node',
-            name='teleop_twist_joy',
+            name='teleop_node',
             parameters=[joy_params, {'use_sim_time': use_sim_time}],
             remappings=[('/cmd_vel','/cmd_vel_joy')]
          )
@@ -39,7 +39,7 @@ def generate_launch_description():
             default_value='false',
             description='Use sim time if true'),
         DeclareLaunchArgument('joy_config', default_value='xbox'),
-        #DeclareLaunchArgument('publish_stamped_twist', default_value='false'),
+        DeclareLaunchArgument('publish_stamped_twist', default_value='false'),
         joy_node,
         teleop_node,
         twist_stamper

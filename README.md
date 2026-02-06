@@ -5,7 +5,7 @@ BartRover is a 6WD differential drive controlled bot built in ROS2
 
 Build and code is based heavily on the tutorials of Articulated Robotics: https://articulatedrobotics.xyz/  (Shout-out, one of the best ROS2 tutorials out there)!
 
-Build 003
+Build 003  
 ROS2 version: Jazzy  
 Ubuntu: 22.xx Noble  
 

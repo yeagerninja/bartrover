@@ -11,38 +11,40 @@ controller_manager:
 diff_cont:
   ros__parameters:
 
-    publish_rate: 50.0
+    publish_rate: 30.0
 
     base_frame_id: base_link
     odom_frame_id: odom
-    #pose_covariance_diagonal : [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
-    #twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    pose_covariance_diagonal : [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
 
-    #open_loop: true
-    #enable_odom_tf: true
+    open_loop: true
+    enable_odom_tf: true
 
     cmd_vel_timeout: 0.5
     use_stamped_vel: false
     lock_memory: false
 
-    
-    left_wheel_names: ['rear_left_wheel_joint']
-    right_wheel_names: ['rear_right_wheel_joint']
-    #left_wheel_names: ['rear_left_wheel_joint', 'middle_left_wheel_joint', 'front_left_wheel_joint']
-    #right_wheel_names: ['rear_right_wheel_joint', 'middle_right_wheel_joint', 'front_right_wheel_joint']
+    #Uncomment for real robot, 6wd but left and right ganged together
+    #left_wheel_names: ['rear_left_wheel_joint']
+    #right_wheel_names: ['rear_right_wheel_joint']
+
+    #Uncomment for simulations, each wheel independently simulated in control
+    left_wheel_names: ['rear_left_wheel_joint', 'middle_left_wheel_joint', 'front_left_wheel_joint']
+    right_wheel_names: ['rear_right_wheel_joint', 'middle_right_wheel_joint', 'front_right_wheel_joint']
     
     wheel_separation: 0.15
     wheel_radius: 0.035
 
     # Velocity and acceleration limits
     linear.x.has_acceleration_limits: true
-    linear.x.max_acceleration: 1.1 # m/s^2 (Adjust based on your robot)
+    linear.x.max_acceleration: 1.2 # m/s^2 (Adjust based on your robot)
     linear.x.min_acceleration: -1.0 # m/s^2 (Negative for braking)
 
     angular.z.has_acceleration_limits: true
-    angular.z.max_acceleration: 1.8 # rad/s^2
-    angular.z.min_acceleration: -1.8 # rad/s^2
+    angular.z.max_acceleration: 2.1 # rad/s^2
+    angular.z.min_acceleration: -2.1 # rad/s^2
 
     # Optional: Set speed limits
     linear.x.max_velocity: 1.2
-    angular.z.max_velocity: 1.5
+    angular.z.max_velocity: 2.0

@@ -7,6 +7,7 @@ Build and code is based heavily on the tutorials of Articulated Robotics: https:
 
 Build 003
 ROS2 version: Jazzy
+Ubuntu: 22.xx Noble
 
 NOTE - currently updating to ROS2 Jazzy to utilize New Gazebo (Harmonic) and Ubuntu Noble as well as Docker development.
 
